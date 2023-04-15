@@ -80,13 +80,10 @@ const CurrentUser: FC<PropsInterface> = ({ children }) => {
 
   const fetchPicture = useCallback(async () => {
     const userId = currentUser?.userId || '';
+    if (!userId) return;
     try {
-      if (userId) {
-        const { data } = await Axios.get<string>(`/users/${userId}/avatar`);
-
-        if (data === '') setUserPhoto(profilePlaceholder);
-        else setUserPhoto(data);
-      }
+      const { data } = await Axios.get<string>(`/users/${userId}/avatar`);
+      setUserPhoto(data === '' ? profilePlaceholder : data);
     } catch (e) {
       setUserPhoto(profilePlaceholder);
     }

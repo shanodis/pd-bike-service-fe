@@ -32,9 +32,19 @@ const SignIn = () => {
     const statusNumber = Number.parseInt(status, 10);
 
     if (statusNumber) {
-      if (statusNumber === 201) navigate('/check-email');
-      else if (statusNumber === 200) window.location.search = '';
-      else if (statusNumber === 401) toast.error(t('signIn.OAuth2Error'));
+      return;
+    }
+
+    switch (statusNumber) {
+      case 201:
+        navigate('/check-email');
+        break;
+      case 200:
+        window.location.search = '';
+        break;
+      case 401:
+        toast.error(t('signIn.OAuth2Error'));
+        break;
     }
   }, [t, navigate]);
 
@@ -42,7 +52,7 @@ const SignIn = () => {
     Axios.defaults.baseURL = 'https://bike-service-be.herokuapp.com';
     const loginParams = appendUrlSearchParams(values);
     try {
-      const { headers, request } = await Axios.post('/login', loginParams);
+      const { headers } = await Axios.post('/login', loginParams);
       setIsPending(true);
 
       const accessToken = headers.authorization;

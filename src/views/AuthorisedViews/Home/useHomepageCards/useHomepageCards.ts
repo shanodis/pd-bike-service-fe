@@ -70,5 +70,5 @@ export const useHomepageCards = (): UseHomepageCards[] => {
       header: t('homePage.employees'),
       visible: hasRole(Roles.Owner)
     }
-  ];
+  ].filter((card) => card.visible);
 };

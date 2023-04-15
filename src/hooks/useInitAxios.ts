@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import Axios, { AxiosResponse } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { useCurrentUser } from '../contexts/UserContext';
 import { showErrorResponses } from '../utils/showErrorResponses';
@@ -25,21 +25,25 @@ export const useInitAxios = () => {
   }, []);
 
   useEffect(() => {
-    Axios.interceptors.response.use(
-      (response) => response,
-      async (error) => {
-        const status = error?.response?.status;
-        if (status === 401) {
-          onClearUser();
-        } else if (status === 406) {
-          await setNewAccessToken();
-          window.location.reload();
-        } else if ([403, 404].includes(status) && error.response.config.method === 'get') {
-          setErrorCode(status);
-        }
-        return Promise.reject(error);
+    const fulfillHandler = (response: AxiosResponse) => response;
+
+    const rejectHandler = async (error: any) => {
+      const status = error?.response?.status;
+
+      if (status === 401) {
+        onClearUser();
+      } else if (status === 406) {
+        await setNewAccessToken();
+        window.location.reload();
+      } else if ([403, 404].includes(status) && error.response.config.method === 'get') {
+        setErrorCode(status);
       }
-    );
+
+      return Promise.reject(error);
+    };
+
+    Axios.interceptors.response.use(fulfillHandler, rejectHandler);
   }, [onClearUser, setNewAccessToken]);
+
   return errorCode;
 };

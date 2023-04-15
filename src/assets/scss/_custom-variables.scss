@@ -25,8 +25,8 @@ $secondary-dark: #54595e;
 $secondary-light: #ced4da;
 $secondary-light-2: #fafafa;
 
-@import './node_modules/bootstrap/scss/functions';
-@import './node_modules/bootstrap/scss/variables';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
 
 $custom-theme-colors: (
   'primary-dark': $primary-dark,

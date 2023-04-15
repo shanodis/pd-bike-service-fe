@@ -10,20 +10,11 @@ const Home = () => {
   return (
     <Container as="main">
       <Row className="mt-5 mb-5 gap-5 justify-content-center justify-content-md-start">
-        {homepageCards
-          .filter((card) => card.visible)
-          .map((card) => (
-            <Col
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              xl={2}
-              key={card.header}
-              className="homepage-card-col">
-              <HomePageCard {...card} />
-            </Col>
-          ))}
+        {homepageCards.map((card) => (
+          <Col xs={12} sm={6} md={4} lg={3} xl={2} key={card.header} className="homepage-card-col">
+            <HomePageCard {...card} />
+          </Col>
+        ))}
       </Row>
 
       <Row className="mt-5 table-decorators">
