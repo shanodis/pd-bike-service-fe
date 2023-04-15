@@ -4,14 +4,13 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Container, Image } from 'react-bootstrap';
-// @ts-ignore
 import serviceLogo from '../../../assets/img/serviceLogo.svg';
 import LanguagePicker from '../../../components/LanguagePicker/LanguagePicker';
 import { completeRegisterValidationSchema } from './completeRegisterValidationSchema/completeRegisterValidationSchema';
 import CompleteRegisterForm from './CompleteRegisterForm/CompleteRegisterForm';
 import { CompleteRegisterRequest } from '../../../interfaces/CompleteRegister/CompleteRegisterRequest';
 import { useRoute } from '../../../hooks/useRoute';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 interface SearchModel {
   userId: string;
@@ -20,7 +19,7 @@ interface SearchModel {
 
 const formikValues: CompleteRegisterRequest = {
   newPassword: '',
-  newPasswordConfirm: '',
+  newPasswordConfirm: ''
 };
 
 const CompleteRegister = () => {
@@ -38,25 +37,25 @@ const CompleteRegister = () => {
       toast.success(t('signUp.successToastSignUp'));
       navigate('/');
     } catch (e: any) {
-      const { message, errors } = e?.response?.data
-      message && toast.error(t('signUp.passwordErrorToast'))
-      errors?.newPassword && toast.error(t('signUp.passwordErrorToast'))
-      errors?.newPasswordConfirm && toast.error(t('signUp.reEnterPasswordErrorToast'))
+      const message = e?.response?.data?.message;
+      const errors = e?.response?.data?.errors;
+      message && toast.error(t('signUp.passwordErrorToast'));
+      errors?.newPassword && toast.error(t('signUp.passwordErrorToast'));
+      errors?.newPasswordConfirm && toast.error(t('signUp.reEnterPasswordErrorToast'));
     }
   };
 
   return (
     <>
-      <Image src={serviceLogo} alt="logo" className='mt-4 ms-5 float-sm-none'/>
+      <Image src={serviceLogo} alt="logo" className="mt-4 ms-5 float-sm-none" />
 
-      <LanguagePicker/>
+      <LanguagePicker />
 
       <Container>
         <Formik
           initialValues={formikValues}
           onSubmit={handleSubmit}
-          validationSchema={completeRegisterValidationSchema}
-        >
+          validationSchema={completeRegisterValidationSchema}>
           <CompleteRegisterForm />
         </Formik>
       </Container>

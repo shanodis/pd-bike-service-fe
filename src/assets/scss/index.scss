@@ -1,6 +1,6 @@
 @import 'custom-variables';
-@import "~bootstrap/scss/bootstrap";
-@import "bootstrap-styles";
+@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap-styles';
 @import '~react-toastify/dist/ReactToastify.css';
 @import 'custom-styles/index';
 @import '~react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
@@ -8,29 +8,31 @@
 @import '~react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 @import '~react-datepicker/dist/react-datepicker.min.css';
 
-
 .navbar-dark .navbar-nav .nav-link {
   color: $white;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 .App {
   font-family: sans-serif;
   text-align: center;
 }
 
-button:focus, input:focus, .btn-group > *, a:focus, textarea:focus, select:focus {
+button:focus,
+input:focus,
+.btn-group > *,
+a:focus,
+textarea:focus,
+select:focus {
   box-shadow: none !important;
 }

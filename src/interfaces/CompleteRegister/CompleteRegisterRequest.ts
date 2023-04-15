@@ -1,4 +1,4 @@
 export interface CompleteRegisterRequest {
-  newPassword: string
-  newPasswordConfirm: string
+  newPassword: string;
+  newPasswordConfirm: string;
 }

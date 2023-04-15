@@ -18,46 +18,32 @@ const ConfirmModal: FC<DeleteConfirmModalProps> = ({
   children,
   modalHeader,
   showModal,
-  handleHide,
+  handleHide
 }) => (
   <Modal
     centered
     onHide={handleHide}
     show={showModal}
-    contentClassName='rounded-0 border-0'
-    dialogClassName='modal-25w'
-  >
-    <Modal.Body
-      as={Container}
-      className='text-center position-relative'
-    >
-      <div className='confirm-modal-overlay'>
+    contentClassName="rounded-0 border-0"
+    dialogClassName="modal-25w">
+    <Modal.Body as={Container} className="text-center position-relative">
+      <div className="confirm-modal-overlay">
         {modalHeader && (
           <Row>
-            <Col className='mt-3'>
+            <Col className="mt-3">
               <strong>{modalHeader}</strong>
             </Col>
           </Row>
         )}
 
-        <span className='text-break'>
-          {children}
-        </span>
+        <span className="text-break">{children}</span>
 
-        <section className='d-flex justify-content-center'>
-          <Button
-            variant='light'
-            className='fw-bold me-5'
-            onClick={handleHide}
-          >
+        <section className="d-flex justify-content-center">
+          <Button variant="light" className="fw-bold me-5" onClick={handleHide}>
             {backButtonLabel}
           </Button>
 
-          <Button
-            variant='danger'
-            className='ms-5 fw-bold'
-            onClick={handleConfirm}
-          >
+          <Button variant="danger" className="ms-5 fw-bold" onClick={handleConfirm}>
             {confirmButtonLabel}
           </Button>
         </section>

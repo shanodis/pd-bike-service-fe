@@ -1,4 +1,4 @@
-import { EmployeeRequest } from "./EmployeeRequest";
+import { EmployeeRequest } from './EmployeeRequest';
 
 export interface EmployeeContextModel {
   employeeData?: EmployeeRequest;

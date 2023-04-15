@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 import { PlusLg, X } from 'react-bootstrap-icons';
 import { Button, Col, Container, Image, Modal, Row } from 'react-bootstrap';
 import ProfilePlaceholder from '../../../../assets/img/person-circle.svg';
-import { ChangeProfilePictureValidationSchema } from "../../../../validation/validation";
-import ChoosePictureButton from "../ChoosePictureButton/ChoosePictureButton";
-import SubmitButton from "../../../SubmitButton/SubmitButton";
-import ConfirmModal from "../../../ConfrimModal/ConfirmModal";
+import { ChangeProfilePictureValidationSchema } from '../../../../validation/validation';
+import ChoosePictureButton from '../ChoosePictureButton/ChoosePictureButton';
+import SubmitButton from '../../../SubmitButton/SubmitButton';
+import ConfirmModal from '../../../ConfrimModal/ConfirmModal';
 
 interface SetPictureModalProps {
   showModal: boolean;
@@ -28,7 +28,7 @@ interface SetPictureModalFormikValues {
 }
 
 const formikValues: SetPictureModalFormikValues = {
-  picture: null,
+  picture: null
 };
 
 const SetPictureModal: FC<SetPictureModalProps> = ({
@@ -40,14 +40,15 @@ const SetPictureModal: FC<SetPictureModalProps> = ({
   urlToPost,
   urlToDelete,
   urlToUpdate,
-  setShowPreviousModal,
+  setShowPreviousModal
 }) => {
   const handleHideModal = () => setShowModal(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const { t } = useTranslation();
   const handleHideDeleteModal = () => setShowDeleteModal(false);
   const handleShowDeleteModal = () => setShowDeleteModal(true);
-  const setParentModalOpacity = () => showDeleteModal ? { opacity: 0.2, zIndex: 200 } : { opacity: 0, zIndex: -1 };
+  const setParentModalOpacity = () =>
+    showDeleteModal ? { opacity: 0.2, zIndex: 200 } : { opacity: 0, zIndex: -1 };
 
   const handleDelete = async () => {
     try {
@@ -57,7 +58,7 @@ const SetPictureModal: FC<SetPictureModalProps> = ({
       toast.error(t('fileModalErrors.delete'));
     } finally {
       handleHideDeleteModal();
-      setShowPreviousModal(prevState => !prevState);
+      setShowPreviousModal((prevState) => !prevState);
     }
   };
 
@@ -76,7 +77,8 @@ const SetPictureModal: FC<SetPictureModalProps> = ({
 
   const deleteIconStyle = isPictureOfBike ? { left: '78%', top: '3%' } : { left: '82%', top: '3%' };
 
-  const shouldHidePlaceholder = (values: SetPictureModalFormikValues) => !!(values.picture || isPictureLoaded);
+  const shouldHidePlaceholder = (values: SetPictureModalFormikValues) =>
+    !!(values.picture || isPictureLoaded);
 
   const handleSubmit = async (values: SetPictureModalFormikValues) => {
     const formData = new FormData();
@@ -103,45 +105,43 @@ const SetPictureModal: FC<SetPictureModalProps> = ({
       centered
       onHide={handleHideModal}
       show={showModal}
-      size='lg'
-      contentClassName='rounded-0 border-0'
-    >
-      <Modal.Body as={Container} className='position-relative'>
+      size="lg"
+      contentClassName="rounded-0 border-0">
+      <Modal.Body as={Container} className="position-relative">
         <Formik<SetPictureModalFormikValues>
           initialValues={formikValues}
           onSubmit={handleSubmit}
-          validationSchema={ChangeProfilePictureValidationSchema}
-        >
+          validationSchema={ChangeProfilePictureValidationSchema}>
           {({ values }) => (
             <Form>
-              <div
-                className='modal-overlay'
-                style={setParentModalOpacity()}
-              />
+              <div className="modal-overlay" style={setParentModalOpacity()} />
 
-              <Row className='m-auto mt-4 justify-content-center justify-content-md-start'>
-                <Col xs='auto'>
-                  <Container className='position-relative'>
-                    <div className='image-wrapper'>
+              <Row className="m-auto mt-4 justify-content-center justify-content-md-start">
+                <Col xs="auto">
+                  <Container className="position-relative">
+                    <div className="image-wrapper">
                       {isPictureOfBike ? (
                         <>
                           <Image
                             src={getPictureSrcPath(values.picture)}
-                            width='220px'
-                            height='220px'
+                            width="220px"
+                            height="220px"
                             style={{ objectFit: 'cover' }}
                             className={`${!isPictureLoaded && !values.picture && 'd-none'}`}
                           />
 
-                          <div className={`border-0 modal-placeholder rounded-0 ${shouldHidePlaceholder(values) && 'd-none'}`}>
+                          <div
+                            className={`border-0 modal-placeholder rounded-0 ${
+                              shouldHidePlaceholder(values) && 'd-none'
+                            }`}>
                             <PlusLg />
                           </div>
                         </>
                       ) : (
                         <Image
                           src={getPictureSrcPath(values.picture) || ProfilePlaceholder}
-                          width='220px'
-                          height='220px'
+                          width="220px"
+                          height="220px"
                           style={{ objectFit: 'cover' }}
                           roundedCircle
                         />
@@ -150,43 +150,33 @@ const SetPictureModal: FC<SetPictureModalProps> = ({
 
                     {isPictureLoaded && (
                       <Button
-                        variant='danger'
-                        className='rounded-circle position-absolute d-flex fs-4 p-0 text-white shadow-none btn-focus-off'
+                        variant="danger"
+                        className="rounded-circle position-absolute d-flex fs-4 p-0 text-white shadow-none btn-focus-off"
                         style={deleteIconStyle}
-                        onClick={handleShowDeleteModal}
-                      >
+                        onClick={handleShowDeleteModal}>
                         <X />
                       </Button>
                     )}
-
                   </Container>
                 </Col>
 
-                <Col
-                  xs='auto'
-                  className='ms-0 ms-md-4 mt-4'
-                >
-                  <ChoosePictureButton name='picture' />
+                <Col xs="auto" className="ms-0 ms-md-4 mt-4">
+                  <ChoosePictureButton name="picture" />
                 </Col>
               </Row>
 
-              <section className='d-flex justify-content-center justify-content-md-end p-3'>
-                <div className='me-3'>
-                  <Button
-                    variant='secondary-light'
-                    className='fw-bold'
-                    onClick={handleHideModal}
-                  >
+              <section className="d-flex justify-content-center justify-content-md-end p-3">
+                <div className="me-3">
+                  <Button variant="secondary-light" className="fw-bold" onClick={handleHideModal}>
                     {t('customerSettings.cancel')}
                   </Button>
                 </div>
 
                 <div>
                   <SubmitButton
-                    variant='success-lighter'
-                    className='text-white fw-bold'
-                    type='submit'
-                  >
+                    variant="success-lighter"
+                    className="text-white fw-bold"
+                    type="submit">
                     {t('customerSettings.saveChanges')}
                   </SubmitButton>
                 </div>
@@ -198,9 +188,8 @@ const SetPictureModal: FC<SetPictureModalProps> = ({
                 showModal={showDeleteModal}
                 handleHide={handleHideDeleteModal}
                 handleConfirm={handleDelete}
-                modalHeader={t('customerSettings.confirmDelete')}
-              >
-                <div className='mt-5 w-100' />
+                modalHeader={t('customerSettings.confirmDelete')}>
+                <div className="mt-5 w-100" />
               </ConfirmModal>
             </Form>
           )}

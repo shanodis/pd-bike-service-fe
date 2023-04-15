@@ -9,7 +9,7 @@ const colProps: ColProps = {
   xs: 12,
   md: 6,
   lg: 4,
-  className: 'mt-5',
+  className: 'mt-5'
 };
 
 const CompleteRegisterForm = () => {
@@ -17,32 +17,25 @@ const CompleteRegisterForm = () => {
 
   return (
     <Form noValidate style={{ marginTop: '15vh' }}>
-      <Row className='justify-content-center'>
+      <Row className="justify-content-center">
         <Col {...colProps}>
-          <PasswordInput
-            name='newPassword'
-            label={t('signUp.newPassword')}
-            required
-          />
+          <PasswordInput name="newPassword" label={t('signUp.newPassword')} required />
         </Col>
       </Row>
 
-      <Row className='justify-content-center'>
+      <Row className="justify-content-center">
         <Col {...colProps}>
           <PasswordInput
-            name='newPasswordConfirm'
+            name="newPasswordConfirm"
             label={t('signUp.reEnterNewPassword')}
             required
           />
         </Col>
       </Row>
 
-      <Row className='justify-content-center'>
+      <Row className="justify-content-center">
         <Col {...colProps}>
-          <SubmitButton
-            variant='primary-lighter'
-            className='float-end'
-          >
+          <SubmitButton variant="primary-lighter" className="float-end">
             {t('signUp.submit')}
           </SubmitButton>
         </Col>

@@ -27,7 +27,7 @@ const EditablePicture: FC<EditablePictureProps> = ({
   reloadData,
   urlToPost,
   urlToDelete,
-  urlToUpdate,
+  urlToUpdate
 }) => {
   const [showProfilePictureModal, setShowProfilePictureModal] = useState(false);
   return (
@@ -51,10 +51,9 @@ const EditablePicture: FC<EditablePictureProps> = ({
       )}
 
       <Button
-        variant='info'
+        variant="info"
         className={`rounded-circle p-2 d-flex text-white shadow-none position-absolute ${editPencilButtonClass}`}
-        onClick={() => setShowProfilePictureModal(true)}
-      >
+        onClick={() => setShowProfilePictureModal(true)}>
         <PencilFill />
       </Button>
 

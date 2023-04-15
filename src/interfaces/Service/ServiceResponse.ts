@@ -1,5 +1,5 @@
 export interface ServiceResponse {
   servicePrice: number;
-  serviceId: string,
+  serviceId: string;
   serviceName: string;
 }

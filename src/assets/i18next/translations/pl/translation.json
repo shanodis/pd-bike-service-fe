@@ -15,7 +15,7 @@
     "customers": "Klienci",
     "serviceCatalogue": "Katalog serwisowy",
     "settings": "Ustawienia",
-    "myBikes" : "Moje Rowery",
+    "myBikes": "Moje Rowery",
     "employees": "Employees"
   },
   "lang": "Język",
@@ -24,7 +24,7 @@
     "servicePanel": "Panel Serwisowy",
     "users": "Użytkownicy",
     "accountHello": "Użytkownik",
-    "myBikes" : "Moje Rowery"
+    "myBikes": "Moje Rowery"
   },
   "userTable": {
     "userId": "ID Użytkownika",
@@ -273,7 +273,7 @@
     "employees": "Pracownicy",
     "addNewEmployee": "Dodawanie nowego pracownika"
   },
-  "errorOverlay" : {
+  "errorOverlay": {
     "pageNotFound": "Nie znaleziono strony",
     "forbidden": "Brak dostępu",
     "backToDashboard": "Powrót na stronę główną"
@@ -281,9 +281,8 @@
   "select": {
     "noOptionsMessage": "Brak wyników wyszukiwania",
     "create": "Stwórz",
-    "loading" : "Ładowanie...",
-    "select" : "Wybierz..."
-
+    "loading": "Ładowanie...",
+    "select": "Wybierz..."
   },
   "fileModalErrors": {
     "delete": "Błąd: Nie można usunąć zdjęcia",
@@ -293,15 +292,15 @@
     "fetch": "Błąd: Nie można pobrać zdjęć",
     "error": "Coś poszło nie tak"
   },
-  "register" : {
+  "register": {
     "firstName": "Imię",
     "lastName": "Nazwisko",
     "phoneNumber": "Numer telefonu",
     "signUp": "Zarejestruj",
-    "gotAccount" : "Masz już konto? ",
+    "gotAccount": "Masz już konto? ",
     "noAccount": "Nie masz konta? ",
-    "success" : "Udało się zarejstrować.",
-    "checkEmail" : "Sprawdź e-mail.",
+    "success": "Udało się zarejstrować.",
+    "checkEmail": "Sprawdź e-mail.",
     "returnSignInButton": "Wróć na ekran logowania."
   },
   "editBike": {

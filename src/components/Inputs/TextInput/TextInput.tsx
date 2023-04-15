@@ -15,7 +15,14 @@ interface TextInputProps extends FormControlProps {
   disabled?: boolean;
 }
 
-const TextInput: FC<TextInputProps> = ({ label, disabled, required, onChange, readOnly, ...props }) => {
+const TextInput: FC<TextInputProps> = ({
+  label,
+  disabled,
+  required,
+  onChange,
+  readOnly,
+  ...props
+}) => {
   const [field, meta] = useField(props.name);
 
   const handleChange = (e: any) => {
@@ -29,36 +36,26 @@ const TextInput: FC<TextInputProps> = ({ label, disabled, required, onChange, re
     <>
       {!readOnly ? (
         <Form.Group controlId={field.name}>
-          <InputLabel
-            label={label}
-            required={required}
-            disabled={disabled}
-          />
+          <InputLabel label={label} required={required} disabled={disabled} />
 
           <Form.Control
             {...field}
             {...props}
-            children={undefined}
             disabled={disabled}
             className={`bg-white ${changeColorWhenDisabled}`}
             onChange={handleChange}
             isInvalid={!!(meta.touched && meta.error)}
-            autoComplete='off'
+            autoComplete="off"
           />
 
           <ErrorMessage name={field.name}>
-            {(errorMessage) =>
-              <Form.Control.Feedback type='invalid'>
-                {errorMessage}
-              </Form.Control.Feedback>}
+            {(errorMessage) => (
+              <Form.Control.Feedback type="invalid">{errorMessage}</Form.Control.Feedback>
+            )}
           </ErrorMessage>
         </Form.Group>
       ) : (
-        <ReadonlyField
-          value={field.value}
-          label={label}
-          disabled={disabled}
-        />
+        <ReadonlyField value={field.value} label={label} disabled={disabled} />
       )}
     </>
   );

@@ -24,7 +24,7 @@
     "servicePanel": "Service Panel",
     "users": "Users",
     "accountHello": "User",
-    "myBikes" : "My bikes"
+    "myBikes": "My bikes"
   },
   "userTable": {
     "firstName": "Name",
@@ -271,7 +271,7 @@
     "employees": "Employees",
     "addNewEmployee": "Add new employee"
   },
-  "errorOverlay" : {
+  "errorOverlay": {
     "pageNotFound": "Page Not Found.",
     "forbidden": "Access denied",
     "backToDashboard": "Back to dashboard"
@@ -279,8 +279,8 @@
   "select": {
     "noOptionsMessage": "No options available",
     "create": "Create",
-    "loading" : "Loading...",
-    "select" : "Select..."
+    "loading": "Loading...",
+    "select": "Select..."
   },
   "fileModalErrors": {
     "delete": "Error: Can't delete a photo",
@@ -290,15 +290,15 @@
     "fetch": "Error: Can't fetch photos",
     "error": "Something went wrong"
   },
-  "register" : {
+  "register": {
     "firstName": "First name",
     "lastName": "Last name",
     "phoneNumber": "Phone number",
     "signUp": "Sign up",
-    "gotAccount" : "Got your account already? ",
+    "gotAccount": "Got your account already? ",
     "noAccount": "Don't have account? ",
-    "success" : "Registration successful.",
-    "checkEmail" : "Check your e-mail.",
+    "success": "Registration successful.",
+    "checkEmail": "Check your e-mail.",
     "returnSignInButton": "Return to sign in."
   },
   "editBike": {

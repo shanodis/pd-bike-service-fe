@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import Axios from "axios";
-import { showErrorResponses } from "../utils/showErrorResponses";
+import { useCallback, useEffect, useState } from 'react';
+import Axios from 'axios';
+import { showErrorResponses } from '../utils/showErrorResponses';
 
 interface UseFetchDataConfig<T> {
   dataMapper?: (data: any) => T;
@@ -9,7 +9,10 @@ interface UseFetchDataConfig<T> {
 
 type UseFetchDataReturnModel<T> = [T, () => Promise<void>, boolean];
 
-export const useFetchData = <T extends unknown>(endpoint: string, config?: UseFetchDataConfig<T>): UseFetchDataReturnModel<T> => {
+export const useFetchData = <T>(
+  endpoint: string,
+  config?: UseFetchDataConfig<T>
+): UseFetchDataReturnModel<T> => {
   const [data, setData] = useState<T>();
   const [isPending, setIsPending] = useState(false);
 

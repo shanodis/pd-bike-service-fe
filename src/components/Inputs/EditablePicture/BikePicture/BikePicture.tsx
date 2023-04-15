@@ -13,16 +13,12 @@ const BikePicture: FC<BikePictureProps> = ({
   setShowProfilePictureModal,
   addPictureButtonClass,
   bikePicture,
-  photoWrapperClass,
+  photoWrapperClass
 }) => {
   if (bikePicture) {
     return (
       <div className={photoWrapperClass}>
-        <Image
-          style={{ objectFit: 'cover' }}
-          className={photoWrapperClass}
-          src={bikePicture}
-        />
+        <Image style={{ objectFit: 'cover' }} className={photoWrapperClass} src={bikePicture} />
       </div>
     );
   }
@@ -31,8 +27,7 @@ const BikePicture: FC<BikePictureProps> = ({
     <Button
       onClick={() => setShowProfilePictureModal(true)}
       className={`border-0 ${addPictureButtonClass} rounded-0`}
-      variant='secondary-light'
-    >
+      variant="secondary-light">
       <PlusLg />
     </Button>
   );

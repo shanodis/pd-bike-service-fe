@@ -3,7 +3,8 @@
   color: $secondary-dark;
 }
 
-.nav-pills .dark-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .dark-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   color: white;
   background-color: $secondary-dark;
 }

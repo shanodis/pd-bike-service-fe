@@ -3,13 +3,14 @@
   color: $primary-lighter;
 }
 
-.nav-pills .primary-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .primary-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   color: white;
   background-color: $primary-lighter;
 }
 
 .scale-up {
-  transform:scaleY(1.1) translateY(-1px);
+  transform: scaleY(1.1) translateY(-1px);
   background-color: $primary-lighter !important;
 }
 

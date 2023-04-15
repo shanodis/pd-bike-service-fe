@@ -1,7 +1,7 @@
-import { ColProps } from "react-bootstrap";
+import { ColProps } from 'react-bootstrap';
 
 export const addRowColProps: ColProps = {
   sm: 12,
   md: 3,
-  className: 'mb-1',
+  className: 'mb-1'
 };

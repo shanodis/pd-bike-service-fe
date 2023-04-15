@@ -7,10 +7,11 @@
   }
 
   thead > tr > th {
-    border: 0
+    border: 0;
   }
 
-  td, th {
+  td,
+  th {
     white-space: nowrap;
   }
 }
@@ -48,8 +49,8 @@
     background-color: $light;
   }
 
-  thead>tr>th {
-    border: 0
+  thead > tr > th {
+    border: 0;
   }
   .page-item:first-child .page-link {
     border-top-left-radius: 4px;
@@ -62,24 +63,24 @@
   }
 
   .page-item.disabled .page-link {
-    color: #CED4DA
+    color: #ced4da;
   }
   .page-item.active .page-link {
     background-color: $primary-bright;
     border-color: $primary-bright;
   }
-  .react-bs-table-no-data{
-    background: white!important;
-    border:none;
+  .react-bs-table-no-data {
+    background: white !important;
+    border: none;
   }
-  .react-bs-table-no-data:hover{
+  .react-bs-table-no-data:hover {
     box-shadow: none;
   }
 }
 
 .react-bootstrap-table table {
   table-layout: auto;
-  --bs-table-hover-bg: #FFF4F4;
+  --bs-table-hover-bg: #fff4f4;
 }
 .add-new-client-button-align {
   display: flex;
@@ -88,7 +89,7 @@
   margin-top: auto;
 }
 @include media-breakpoint-down(md) {
-  .add-new-client-button-align{
+  .add-new-client-button-align {
     justify-content: start;
   }
 }
@@ -96,7 +97,7 @@
 @include media-breakpoint-down(sm) {
   .table-decorators {
     .page-link {
-      padding: 0.375rem 0.30rem;
+      padding: 0.375rem 0.3rem;
     }
   }
 }
@@ -119,7 +120,7 @@
   background-color: transparent !important;
 
   &:hover {
-    color: #01B2D8;
+    color: #01b2d8;
   }
 }
 

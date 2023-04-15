@@ -20,31 +20,31 @@ const PasswordInput: FC<PasswordInputProps> = ({ label, formText, required, type
       {label && (
         <>
           <Form.Label>{label}</Form.Label>
-          {required && <span className='text-danger'>*</span>}
+          {required && <span className="text-danger">*</span>}
         </>
       )}
       <InputGroup>
         <Form.Control
           {...field}
           {...props}
-          children={undefined}
           type={!isPasswordShown ? 'password' : 'text'}
           isInvalid={!!(meta.touched && meta.error)}
-          autoComplete='off'
+          autoComplete="off"
         />
 
         <Button
-          variant='outline-secondary'
+          variant="outline-secondary"
           onClick={() => setIsPasswordShown(!isPasswordShown)}
-          className='rounded-end'
-        >
+          className="rounded-end">
           {isPasswordShown ? <Eye /> : <EyeSlash />}
         </Button>
 
         {formText && <FormText>{formText}</FormText>}
 
         <ErrorMessage name={field.name}>
-          {(errorMessage) => <Form.Control.Feedback type='invalid'>{errorMessage}</Form.Control.Feedback>}
+          {(errorMessage) => (
+            <Form.Control.Feedback type="invalid">{errorMessage}</Form.Control.Feedback>
+          )}
         </ErrorMessage>
       </InputGroup>
     </Form.Group>

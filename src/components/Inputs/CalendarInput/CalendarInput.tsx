@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { useField } from 'formik';
-import {NumericFormat} from 'react-number-format';
-import {FormControl} from 'react-bootstrap';
+import { NumericFormat } from 'react-number-format';
+import { FormControl } from 'react-bootstrap';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import { useTranslation } from 'react-i18next';
 import CalendarCustomHeader from './CalendarCustomHeader/CalendarCustomHeader';
 import ReadonlyField from '../ReadonlyField/ReadonlyField';
-import {format} from "date-fns";
+import { format } from 'date-fns';
 
 interface CalendarInputProps extends ReactDatePickerProps {
   name: string;
@@ -16,10 +16,17 @@ interface CalendarInputProps extends ReactDatePickerProps {
   label?: string;
 }
 
-const CalendarInput: FC<CalendarInputProps> = ({ name, readonly, label, roundSide, rounded, ...props }) => {
+const CalendarInput: FC<CalendarInputProps> = ({
+  name,
+  readonly,
+  label,
+  roundSide,
+  rounded,
+  ...props
+}) => {
   const [field] = useField(name);
   const { t } = useTranslation();
-  const isRounded = () => rounded ? 'rounded' : 'rounded-0';
+  const isRounded = () => (rounded ? 'rounded' : 'rounded-0');
 
   return (
     <>
@@ -29,7 +36,7 @@ const CalendarInput: FC<CalendarInputProps> = ({ name, readonly, label, roundSid
           renderCustomHeader={(params) => <CalendarCustomHeader {...params} />}
           selected={field.value && new Date(field.value)}
           todayButton={t('ordersTable.calendarTodayButton')}
-          dateFormat='dd.MM.yyyy'
+          dateFormat="dd.MM.yyyy"
           showPopperArrow={false}
           placeholderText={t('ordersTable.calendarDateFormatPlaceholder')}
           customInput={
@@ -37,18 +44,15 @@ const CalendarInput: FC<CalendarInputProps> = ({ name, readonly, label, roundSid
               className={`custom-input shadow-none ${isRounded()} rounded-${roundSide}`}
               name={name}
               customInput={(props) => <FormControl {...props} size={undefined} />}
-              autoComplete='off'
-              autoCapitalize='none'
-              autoCorrect='true'
-            />}
+              autoComplete="off"
+              autoCapitalize="none"
+              autoCorrect="true"
+            />
+          }
         />
       ) : (
         <ReadonlyField label={label}>
-          <NumericFormat
-            name={name}
-            value={format(field.value, 'DD.MM.yyyy')}
-            displayType='text'
-          />
+          <NumericFormat name={name} value={format(field.value, 'DD.MM.yyyy')} displayType="text" />
         </ReadonlyField>
       )}
     </>

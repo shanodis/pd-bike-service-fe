@@ -1,8 +1,8 @@
-.broken-bike-img{
+.broken-bike-img {
   width: 50%;
 }
 @include media-breakpoint-down(md) {
   .broken-bike-img {
-    width:100%;
+    width: 100%;
   }
 }

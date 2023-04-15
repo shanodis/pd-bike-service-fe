@@ -11,13 +11,13 @@ const MoreInformation: FC<MoreInformationProps> = ({ readonlyMode }) => {
   const { t } = useTranslation();
   return (
     <>
-      <Row as='section'>
-        <Col className='mt-4'>
+      <Row as="section">
+        <Col className="mt-4">
           <TextInput
-            name='note'
-            type='text'
+            name="note"
+            type="text"
             label={t('addNewCustomer.moreInfo')}
-            as='textarea'
+            as="textarea"
             rows={10}
             readOnly={readonlyMode}
           />
@@ -26,10 +26,8 @@ const MoreInformation: FC<MoreInformationProps> = ({ readonlyMode }) => {
 
       {!readonlyMode && (
         <Row>
-          <Col className='mt-1'>
-          <span className='text-secondary fst-italic'>
-            {t('addNewCustomer.maxCharacters')}
-          </span>
+          <Col className="mt-1">
+            <span className="text-secondary fst-italic">{t('addNewCustomer.maxCharacters')}</span>
           </Col>
         </Row>
       )}

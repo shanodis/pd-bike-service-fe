@@ -1,4 +1,4 @@
-import {BikePhotoListResponse} from "./BikePhotoListResponse";
+import { BikePhotoListResponse } from './BikePhotoListResponse';
 
 export interface BikeListResponse {
   bikeId: string;

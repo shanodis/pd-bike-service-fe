@@ -5,5 +5,5 @@ export enum OrderPeriods {
   LastMonth,
   Last3Months,
   LastYear,
-  Custom,
+  Custom
 }

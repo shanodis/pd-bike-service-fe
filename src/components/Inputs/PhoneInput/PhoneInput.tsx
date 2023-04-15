@@ -21,12 +21,9 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ label, prefixName, name, requir
     <>
       {!readonly ? (
         <Form.Group>
-          <InputLabel
-            label={label}
-            required={required}
-          />
+          <InputLabel label={label} required={required} />
           <InputGroup>
-            <Form.Select className='phone-input' {...prefixField}>
+            <Form.Select className="phone-input" {...prefixField}>
               {TelephonePrefixes.map((prefix) => (
                 <option key={prefix} value={prefix}>
                   {prefix}
@@ -38,18 +35,16 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ label, prefixName, name, requir
               {...field}
               customInput={(props) => <Form.Control {...props} size={undefined} />}
             />
-            <ErrorMessage name={name}>{(err) => <Form.Control.Feedback
-              type='invalid'>{err}</Form.Control.Feedback>}</ErrorMessage>
+            <ErrorMessage name={name}>
+              {(err) => <Form.Control.Feedback type="invalid">{err}</Form.Control.Feedback>}
+            </ErrorMessage>
           </InputGroup>
         </Form.Group>
       ) : (
         <>
           {label}
-          <div className='w-100 p-1' />
-          {prefixField.value} <NumericFormat
-          value={field.value || '-'}
-          displayType='text'
-          />
+          <div className="w-100 p-1" />
+          {prefixField.value} <NumericFormat value={field.value || '-'} displayType="text" />
         </>
       )}
     </>

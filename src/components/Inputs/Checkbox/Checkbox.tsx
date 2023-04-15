@@ -5,11 +5,7 @@ import { useField } from 'formik';
 const Checkbox: FC<FormCheckProps> = ({ ...props }) => {
   const [field] = useField(props.name!);
   return (
-    <FormCheck
-      {...props}
-      type='checkbox'
-      checked={field.value}
-    >
+    <FormCheck {...props} type="checkbox" checked={field.value}>
       {props.label}
     </FormCheck>
   );

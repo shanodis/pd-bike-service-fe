@@ -9,9 +9,9 @@
     grid-template-rows: 1fr 1fr 1fr;
     gap: 10px 10px;
     grid-template-areas:
-    "photo photo photo"
-    "photo photo photo"
-    "p1 p2 p3";
+      'photo photo photo'
+      'photo photo photo'
+      'p1 p2 p3';
     align-content: space-around;
     justify-content: space-between;
   }
@@ -35,11 +35,13 @@
     padding-bottom: 50px;
   }
 
-  .main-photo:hover, .p1:hover, .p2:hover, .p3:hover {
+  .main-photo:hover,
+  .p1:hover,
+  .p2:hover,
+  .p3:hover {
     transform: scale(1.01);
     opacity: 0.9;
   }
-
 }
 
 .bike-info-margin {

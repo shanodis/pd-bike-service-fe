@@ -12,16 +12,14 @@
   .col-right {
     width: 55vw;
   }
-;
-
   .image-login {
-    background-image: url("src/assets/img/loginPicture.png");
+    background-image: url('src/assets/img/loginPicture.png');
     background-position: 100%;
     background-size: 100vh;
     background-repeat: no-repeat;
   }
-  .image-register{
-    background-image: url("src/assets/img/register.png");
+  .image-register {
+    background-image: url('src/assets/img/register.png');
     background-position: 100%;
     background-size: 100vh;
     background-repeat: no-repeat;
@@ -38,6 +36,4 @@
       display: none;
     }
   }
-
 }
-

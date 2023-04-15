@@ -1,4 +1,4 @@
-import { CustomerRequest } from "./CustomerRequest";
+import { CustomerRequest } from './CustomerRequest';
 
 export interface CustomerContextModel {
   customerData?: CustomerRequest;

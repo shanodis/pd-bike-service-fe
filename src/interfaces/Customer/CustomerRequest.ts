@@ -1,4 +1,4 @@
-import { CustomerResponse } from "./CustomerResponse";
+import { CustomerResponse } from './CustomerResponse';
 
 export interface CustomerRequest extends CustomerResponse {
   countryId: string;

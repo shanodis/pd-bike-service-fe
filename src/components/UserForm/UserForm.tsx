@@ -7,9 +7,9 @@ import PhoneInput from '../Inputs/PhoneInput/PhoneInput';
 import InvoiceForm from './InvoiceForm/InvoiceForm';
 import MoreInformation from './MoreInformation/MoreInformation';
 import Email from './Email/Email';
-import { formColProps } from "../../consts/formColProps";
-import Checkbox from "../Inputs/Checkbox/Checkbox";
-import { CustomerRequest } from "../../interfaces/Customer/CustomerRequest";
+import { formColProps } from '../../consts/formColProps';
+import Checkbox from '../Inputs/Checkbox/Checkbox';
+import { CustomerRequest } from '../../interfaces/Customer/CustomerRequest';
 
 interface AddClientFormProps extends HTMLAttributes<any> {
   hideMailInput?: boolean;
@@ -28,21 +28,18 @@ const UserForm: FC<AddClientFormProps> = ({
   hideNoteInput,
   disableMailInput,
   customFormColProps,
-  hideCheckboxInput,
+  hideCheckboxInput
 }) => {
   const { t } = useTranslation();
   const { values, handleChange } = useFormikContext<CustomerRequest>();
 
   return (
     <>
-      <Row as='section'>
-        <Col
-          {...formColProps}
-          {...customFormColProps}
-        >
+      <Row as="section">
+        <Col {...formColProps} {...customFormColProps}>
           <TextInput
-            name='firstName'
-            type='text'
+            name="firstName"
+            type="text"
             label={t('addNewCustomer.firstName')}
             required
             readOnly={readonlyMode}
@@ -50,15 +47,11 @@ const UserForm: FC<AddClientFormProps> = ({
         </Col>
       </Row>
 
-      <Row as='section'>
-        <Col
-          {...formColProps}
-          {...customFormColProps}
-          className='mt-4'
-        >
+      <Row as="section">
+        <Col {...formColProps} {...customFormColProps} className="mt-4">
           <TextInput
-            name='lastName'
-            type='text'
+            name="lastName"
+            type="text"
             label={t('addNewCustomer.lastName')}
             required
             readOnly={readonlyMode}
@@ -74,15 +67,11 @@ const UserForm: FC<AddClientFormProps> = ({
         />
       )}
 
-      <Row as='section'>
-        <Col
-          {...formColProps}
-          {...customFormColProps}
-          className='mt-4'
-        >
+      <Row as="section">
+        <Col {...formColProps} {...customFormColProps} className="mt-4">
           <PhoneInput
-            name='phoneNumber'
-            prefixName='phoneNumberPrefix'
+            name="phoneNumber"
+            prefixName="phoneNumberPrefix"
             label={t('addNewCustomer.phoneNumber')}
             required
             readonly={readonlyMode}
@@ -92,20 +81,18 @@ const UserForm: FC<AddClientFormProps> = ({
 
       <Row>
         {!hideCheckboxInput && (
-        <Col className='mt-4'>
-          <Checkbox
-            name='addInvoice'
-            label={t('customerDetails.withInvoiceCheckbox')}
-            disabled={readonlyMode}
-            onChange={handleChange}
-            id='invoice-checkbox'
-          />
-        </Col>
+          <Col className="mt-4">
+            <Checkbox
+              name="addInvoice"
+              label={t('customerDetails.withInvoiceCheckbox')}
+              disabled={readonlyMode}
+              onChange={handleChange}
+              id="invoice-checkbox"
+            />
+          </Col>
         )}
         <Collapse in={values.addInvoice}>
-          <div className='py-0'>
-            {!hideInvoice && <InvoiceForm readonlyMode={readonlyMode} />}
-          </div>
+          <div className="py-0">{!hideInvoice && <InvoiceForm readonlyMode={readonlyMode} />}</div>
         </Collapse>
       </Row>
 

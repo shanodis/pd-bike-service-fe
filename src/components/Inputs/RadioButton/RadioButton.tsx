@@ -9,11 +9,7 @@ interface RadioButtonProps extends ToggleButtonProps {
 const RadioButton: FC<RadioButtonProps> = ({ children, ...props }) => {
   const [field] = useField(props.name);
   return (
-    <ToggleButton
-      {...field}
-      {...props}
-      style={{ opacity: 1 }}
-    >
+    <ToggleButton {...field} {...props} style={{ opacity: 1 }}>
       {children}
     </ToggleButton>
   );
