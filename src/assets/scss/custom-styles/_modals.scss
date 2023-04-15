@@ -1,0 +1,31 @@
+.modal-overlay {
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-backdrop {
+  opacity: 0.2 !important;
+}
+
+.modal-25w {
+  max-width: 25%;
+}
+
+.image-wrapper {
+  width: 220px;
+  height: 220px;
+}
+
+.image-fit {
+  object-fit: cover;
+}
+
+.btn-focus-off:focus {
+  background-color: $danger;
+}

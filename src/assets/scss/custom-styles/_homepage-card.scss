@@ -1,0 +1,30 @@
+.homepage-card {
+  &, &-col {
+    width: 9rem;
+  }
+
+  max-height: 20rem;
+
+  &-title {
+    min-height: 3rem;
+    margin: .6rem auto 0 auto;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &-btn {
+    width: 100%;
+
+    &:first-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  &-img {
+    height: 45px;
+    width: 52px;
+    display: flex;
+    margin: 2rem auto 1rem auto;
+  }
+}

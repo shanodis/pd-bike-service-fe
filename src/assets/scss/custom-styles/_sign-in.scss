@@ -1,0 +1,43 @@
+.sign-in {
+  .col-left {
+    box-sizing: border-box;
+    width: 45vw;
+
+    .form {
+      margin: 10% 5% 0 5%;
+      padding: 0 10% 0 10%;
+    }
+  }
+
+  .col-right {
+    width: 55vw;
+  }
+;
+
+  .image-login {
+    background-image: url("src/assets/img/loginPicture.png");
+    background-position: 100%;
+    background-size: 100vh;
+    background-repeat: no-repeat;
+  }
+  .image-register{
+    background-image: url("src/assets/img/register.png");
+    background-position: 100%;
+    background-size: 100vh;
+    background-repeat: no-repeat;
+  }
+  .select-img-flag {
+    max-height: 23px;
+  }
+
+  @include media-breakpoint-down(md) {
+    .col-left {
+      width: 100vw;
+    }
+    .col-right {
+      display: none;
+    }
+  }
+
+}
+

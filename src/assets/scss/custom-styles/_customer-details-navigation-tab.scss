@@ -1,0 +1,22 @@
+.nav-pills .dark-pills .nav-link {
+  background: none;
+  color: $secondary-dark;
+}
+
+.nav-pills .dark-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: white;
+  background-color: $secondary-dark;
+}
+
+@include media-breakpoint-down(sm) {
+  .nav-pills .dark-pills .nav-link {
+    border-radius: 0.25rem !important;
+    border: 1px solid $dark !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .mobile-nav {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}

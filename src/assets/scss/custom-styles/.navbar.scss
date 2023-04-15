@@ -1,0 +1,26 @@
+.user-logo {
+  object-fit: cover;
+}
+
+.user-logo-wrapper, .user-logo {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+}
+
+@include media-breakpoint-down(md) {
+  .user-logo-display-none {
+    display: none;
+  }
+}
+.lang-flag-img {
+  width: 25px;
+  margin-bottom: 4px;
+}
+
+#lang-dropdown {
+  color: black;
+}
+.navbar-default {
+  background-color: $primary;
+}

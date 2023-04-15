@@ -1,0 +1,44 @@
+.main-empty-photo-placeholder {
+  background-color: $secondary-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $secondary;
+  font-size: 56px;
+}
+
+.main-empty-photo-placeholder, .main-photo  {
+  width: 350px;
+  height: 350px;
+}
+
+.modal-placeholder {
+  width: 220px;
+  height: 220px;
+}
+
+.empty-photo-placeholder, .modal-placeholder {
+  background-color: $secondary-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $secondary;
+  font-size: 26px;
+}
+
+.empty-photo-placeholder, .photo {
+  width: 101px;
+  height: 100px;
+}
+
+.main-edit-button {
+  top: 5%;
+  left: 85%;
+}
+
+.edit-button {
+  font-size: 12px;
+  padding: 5px !important;
+  top: 6%;
+  left: 70%;
+}

@@ -1,0 +1,13 @@
+.breadcrumb-style {
+  a {
+    color: $secondary !important;
+    text-decoration: none !important;
+  }
+  a:hover {
+    color: $secondary-light !important;
+  }
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  font-weight: normal;
+}

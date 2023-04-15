@@ -1,0 +1,41 @@
+.animated-blobs {
+  transition: transform 5s;
+
+  .top {
+    animation: rotate 120s infinite linear;
+  }
+
+  .middle {
+    animation: rotate 123s infinite reverse linear;
+  }
+
+  .bottom {
+    animation: rotate 126s infinite linear;
+  }
+}
+
+.blobs:hover {
+  transform: translate(100px, 100px) scale(0.0);
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(100px, 100px) rotate(0deg);
+  }
+  100% {
+    transform: translate(100px, 100px) rotate(359deg);
+  }
+}
+
+.blob-container {
+  display: flex;
+  justify-content: center;
+
+  .blob-positioning {
+    position: fixed;
+    z-index: -1;
+    min-width: 600px;
+    max-width: calc((100vh + 90vw) / 2 - 20vw);
+    top: 5%;
+  }
+}

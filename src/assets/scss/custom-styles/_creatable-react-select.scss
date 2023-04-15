@@ -1,0 +1,46 @@
+.crs__control {
+  border: 1px solid #ced4da!important;
+  height: 38px;
+  line-height: 100%;
+  box-shadow: none!important;
+  border-radius: 3px!important;
+  .crs__value-container{
+    line-height: 100%;
+    height: 100%;
+    line-height: 100%;
+  }
+  .crs__single-value {
+    height: 38px;
+    line-height: 38px;
+  }
+  .crs__indicator-separator{
+    display: none;
+  }
+}
+
+.crs__control--is-focused{
+  height: 38px;
+  line-height: 100%;
+  background-color:$white;
+  color: black;
+  cursor: pointer;
+}
+.crs__option--is-selected{
+  background-color:$white!important;
+  color: black!important;
+  font-weight: bold;
+}
+.crs__option--is-selected:hover{
+  background-color: $light!important;
+}
+.crs__menu{
+  margin-top: 1px!important;
+}
+.crs__menu-list{
+  padding: 0!important;
+  z-index: 10;
+}
+.crs__option{
+  padding: 0 10px!important;
+  margin: 0!important;
+}

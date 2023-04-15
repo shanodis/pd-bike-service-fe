@@ -1,0 +1,13 @@
+.btn-check:checked + .btn-primary-lighter,
+.btn-check:active + .btn-primary-lighter,
+.btn-primary-lighter:active,
+.btn-primary-lighter.active,
+.show > .btn-primary-lighter.dropdown-toggle {
+  color: #fff;
+  background-color: $primary-lighter;
+  border-color: #842029;
+}
+
+.statuses-spacing {
+  margin-top: 5.5rem;
+}

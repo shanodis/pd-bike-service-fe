@@ -1,0 +1,61 @@
+.rs__value-container {
+  height: 36px;
+  box-sizing: border-box;
+  border:$secondary-light!important;
+
+
+  .rs__indicator-separator {
+    display: none;
+  }
+  .rs__single-value--is-disabled{
+    color: $gray-900;
+  }
+  .rs__option--is-selected{
+    font-weight: bold!important;
+  }
+  .rs__menu {
+    margin-top: 3px;
+    z-index: 10;
+    border-color:$secondary-light!important;
+  }
+  .rs__menu-list{
+    margin-top: 0!important;
+    padding: 0;
+    border: none!important;
+    border-radius: 0.25rem;
+    z-index: 10;
+  }
+  .rs__indicator {
+    padding: 0 8px 1px 0;
+  }
+
+  .rs__control {
+    box-shadow: none;
+    border-color: $input-border-color;
+    border-radius: 0.25rem;
+  }
+
+  .rs__control:hover {
+    border-color: $input-border-color;
+    cursor: text;
+  }
+
+  .rs__placeholder {
+    color: $input-placeholder-color;
+  }
+  .rs__option--is-focused{
+    background-color:$white;
+    color: black;
+    cursor: pointer;
+  }
+  .rs__option--is-selected{
+    background-color:$white;
+    color: black;
+  }
+  .rs__option--is-focused:hover{
+    background-color: $light;
+  }
+  .rs__control--is-disabled{
+    background-color: $gray-200;
+  }
+}

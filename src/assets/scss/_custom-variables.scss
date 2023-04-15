@@ -1,0 +1,42 @@
+$primary: #842029;
+
+$success-lighter: #28A745;
+
+$primary-lighter: #B02A37;
+
+$light: #F8D7DA;
+
+$table-striped-bg: #F8D7DA;
+
+$homepage-card-bg: #F8D7DA;
+
+$homepage-card-btn: #B02A37;
+
+$details-button-color: #54595E;
+
+$danger: #DC3545;
+
+$info: #17A2B8;
+
+$primary-dark: #842029;
+$primary-bright: #E35D6A;
+$primary-light: #F8D7DA;
+$secondary-dark: #54595E;
+$secondary-light: #CED4DA;
+$secondary-light-2: #FAFAFA;
+
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+
+$custom-theme-colors: (
+        "primary-dark": $primary-dark,
+        "primary-bright": $primary-bright,
+        "primary-light": $primary-light,
+        "primary-lighter": $primary-lighter,
+        "secondary-dark": $secondary-dark,
+        "secondary-light": $secondary-light,
+        "secondary-light-2": $secondary-light-2,
+        "success-lighter": $success-lighter,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
