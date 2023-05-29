@@ -4,7 +4,7 @@ import Axios from 'axios';
 import { toast } from 'react-toastify';
 import { Container, Image } from 'react-bootstrap';
 import { Formik } from 'formik';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import serviceLogo from '../../../assets/img/serviceLogo.svg';
 import LanguagePicker from '../../../components/LanguagePicker/LanguagePicker';
 import { Roles } from '../../../enums/Roles';
@@ -23,12 +23,12 @@ const initialValues: RegisterRequest = {
 
 const Register = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const handleRegister = async (values: RegisterRequest) => {
     try {
       await Axios.post('/auth/register', values);
-      navigate('check-email');
+      history.push('check-email');
     } catch (e: any) {
       const email = e?.response?.data?.errors?.email;
       email && toast.error(t('addNewCustomer.emailAlreadyUsedToastError'));

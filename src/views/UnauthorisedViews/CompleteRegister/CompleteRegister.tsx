@@ -10,7 +10,7 @@ import { completeRegisterValidationSchema } from './completeRegisterValidationSc
 import CompleteRegisterForm from './CompleteRegisterForm/CompleteRegisterForm';
 import { CompleteRegisterRequest } from '../../../interfaces/CompleteRegister/CompleteRegisterRequest';
 import { useRoute } from '../../../hooks/useRoute';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 interface SearchModel {
   userId: string;
@@ -27,7 +27,7 @@ const CompleteRegister = () => {
   const { getSearch } = useRoute();
   const { userId } = getSearch<SearchModel>();
 
-  const navigate = useNavigate();
+  const history = useHistory();
 
   // const config = useMemo(() => ({ params: { token } }), [token]);
 
@@ -35,7 +35,7 @@ const CompleteRegister = () => {
     try {
       await Axios.patch(`/auth/${userId}/password`, values);
       toast.success(t('signUp.successToastSignUp'));
-      navigate('/');
+      history.push('/');
     } catch (e: any) {
       const message = e?.response?.data?.message;
       const errors = e?.response?.data?.errors;

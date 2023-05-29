@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import BootstrapTable, { ColumnDescription } from 'react-bootstrap-table-next';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useTableProps from '../../../../hooks/useTableProps';
 import { OrderListResponse } from '../../../../interfaces/Order/OrderListResponse';
@@ -15,7 +15,7 @@ import { getDate } from '../../../../utils/getDate';
 const OrderTable: FC = () => {
   const { tableProps } = useTableProps<OrderListResponse>('/orders');
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const hasRole = useRole();
 
@@ -65,7 +65,7 @@ const OrderTable: FC = () => {
         <Button
           type="button"
           className="details-button-style float-end"
-          onClick={() => navigate(`/orders/${cell}/invoice`)}>
+          onClick={() => history.push(`/orders/${cell}/invoice`)}>
           {t('orders.details')}
         </Button>
       )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, Col, Container, Image, Row, Spinner } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import Axios from 'axios';
 import { toast } from 'react-toastify';
@@ -37,7 +37,7 @@ const userDataMapper = (data: CustomerRequest) => ({
 const UserSettings = () => {
   const { t } = useTranslation();
   const { userId } = useParams<{ userId: string }>();
-  const navigate = useNavigate();
+  const history = useHistory();
   const [userData] = useFetchData<CustomerRequest>(`/users/${userId}/details`, {
     dataMapper: userDataMapper
   });
@@ -126,7 +126,7 @@ const UserSettings = () => {
                     <Button
                       variant="secondary-light-2"
                       className="me-3 shadow-none fw-bold"
-                      onClick={() => navigate('/')}>
+                      onClick={() => history.push('/')}>
                       {t('customerSettings.cancel')}
                     </Button>
 
@@ -164,8 +164,7 @@ const UserSettings = () => {
                           <Button
                             onClick={() => handle2FAEnableSubmit({ isUsing2FA: true })}
                             variant="success"
-                            className="fw-bold"
-                          >
+                            className="fw-bold">
                             {t('customerSettings.generateQrCode')}
                           </Button>
                         </Col>

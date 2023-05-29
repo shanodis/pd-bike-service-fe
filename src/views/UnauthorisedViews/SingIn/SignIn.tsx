@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import { toast } from 'react-toastify';
 import { Col, Image, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 import { signInValidationSchema } from './signInValidationSchema/signInValidationSchema';
 import serviceLogo from '../../../assets/img/serviceLogo.svg';
@@ -24,7 +24,7 @@ const initialValues: SignInRequest = {
 const SignIn = () => {
   const { fetchUserData, setIsPending } = useCurrentUser();
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const history = useHistory();
   const [signInRequestCache, setSignInRequestCache] = useState<SignInRequest>();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const SignIn = () => {
 
     switch (statusNumber) {
       case 201:
-        navigate('/check-email');
+        history.push('/check-email');
         break;
       case 200:
         window.location.search = '';
@@ -46,7 +46,7 @@ const SignIn = () => {
         toast.error(t('signIn.OAuth2Error'));
         break;
     }
-  }, [t, navigate]);
+  }, [t, history]);
 
   const handleSignIn = async (values: SignInRequest) => {
     Axios.defaults.baseURL = 'http://localhost:8080';
@@ -65,7 +65,7 @@ const SignIn = () => {
 
       Axios.defaults.baseURL = 'http://localhost:8080/api/v1';
 
-      navigate('/');
+      history.push('/');
 
       await fetchUserData();
     } catch (e: any) {

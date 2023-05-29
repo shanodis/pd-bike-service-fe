@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Route, Routes as RouterRoutes } from 'react-router-dom';
+import { Route, Route as RouterRoutes } from 'react-router-dom';
 import Home from './Home/Home';
 import Navbar from '../../components/Navbar/Navbar';
 import UserSettings from './UserSettings/UserSettings';

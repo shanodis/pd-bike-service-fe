@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-// @ts-ignore
 import serviceLogo from '../../../assets/img/serviceLogo.svg';
 
 const CheckEmail = () => {
