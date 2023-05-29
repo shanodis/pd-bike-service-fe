@@ -99,6 +99,7 @@ const CurrentUser: FC<PropsInterface> = ({ children }) => {
     localStorage.removeItem('JWT_REFRESH_TOKEN');
     setCurrentUser(undefined);
     delete Axios.defaults.headers.common.Authorization;
+    delete Axios.defaults.headers['authorization-refresh'];
     toast.info(t('signIn.signOut'));
     await fetchUserData();
   };

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useField } from 'formik';
-import { NumericFormat } from 'react-number-format';
-import { FormControl } from 'react-bootstrap';
+import NumberFormat from 'react-number-format';
+import { Form } from 'react-bootstrap';
 import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import { useTranslation } from 'react-i18next';
 import CalendarCustomHeader from './CalendarCustomHeader/CalendarCustomHeader';
@@ -40,10 +40,12 @@ const CalendarInput: FC<CalendarInputProps> = ({
           showPopperArrow={false}
           placeholderText={t('ordersTable.calendarDateFormatPlaceholder')}
           customInput={
-            <NumericFormat
+            <NumberFormat
               className={`custom-input shadow-none ${isRounded()} rounded-${roundSide}`}
               name={name}
-              customInput={(props) => <FormControl {...props} size={undefined} />}
+              format="##.##.####"
+              mask="_"
+              customInput={Form.Control}
               autoComplete="off"
               autoCapitalize="none"
               autoCorrect="true"
@@ -52,7 +54,12 @@ const CalendarInput: FC<CalendarInputProps> = ({
         />
       ) : (
         <ReadonlyField label={label}>
-          <NumericFormat name={name} value={format(field.value, 'DD.MM.yyyy')} displayType="text" />
+          <NumberFormat
+            name={name}
+            format="##.##.####"
+            value={format(field.value, 'DD.MM.yyyy')}
+            displayType="text"
+          />
         </ReadonlyField>
       )}
     </>

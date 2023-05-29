@@ -210,7 +210,10 @@
     "saveChanges": "Zapisz zmiany",
     "confirmDelete": "Czy jesteś pewnien, że chcesz usunąć to zdjęcie?",
     "confirmDeleteBtn": "Usuń",
-    "backBtn": "Wróć"
+    "backBtn": "Wróć",
+    "enable2FA": "Dwuskładnikowa autentykacja",
+    "2FAalert": "Ostrzeżenie! Po wyjściu z tej strony stracisz ten kod QR. Zawsze możesz wygenerować nowy kod używając przycisku 'Wygeneruj nowy kod QR'",
+    "generateQrCode": "Wygeneruj nowy kod Q"
   },
   "userDropdown": {
     "settings": "Ustawienia",
@@ -258,7 +261,8 @@
     "forgotPassword": "Nie pamiętasz hasła?",
     "fb": "Zaloguj się przez Facebook",
     "OAuth2Error": "Błąd uwierzytelniania OAuth2",
-    "signOut": "Zapraszamy ponownie"
+    "signOut": "Zapraszamy ponownie",
+    "verificationCode": "Kod weryfikacyjny"
   },
   "breadcrumbs": {
     "dashboard": "Strona główna",

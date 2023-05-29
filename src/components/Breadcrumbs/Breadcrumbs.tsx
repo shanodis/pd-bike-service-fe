@@ -7,10 +7,9 @@ interface BreadcrumbsProps {
 }
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ items }) => {
-  const lastItem = items.pop();
   return (
     <Breadcrumb className="mt-5">
-      {items.map((item) => (
+      {items.slice(0, items.length - 1).map((item) => (
         <Breadcrumb.Item
           key={item.name}
           linkProps={{ to: item.href, className: 'text-decoration-none text-secondary' }}
@@ -19,7 +18,7 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ items }) => {
         </Breadcrumb.Item>
       ))}
       <Breadcrumb.Item className="fw-bold text-dark" active>
-        {lastItem?.name}
+        {items.at(-1)?.name}
       </Breadcrumb.Item>
     </Breadcrumb>
   );

@@ -73,3 +73,7 @@ export const ChangeProfilePictureValidationSchema = object().shape({
 export const EditBikeValidationSchema = object().shape({
   bikeName: string().required(i18n.t('validation.required'))
 });
+
+export const VerificationCodeValidationSchema = object().shape({
+  verificationCode: string().required(i18n.t('validation.required'))
+});

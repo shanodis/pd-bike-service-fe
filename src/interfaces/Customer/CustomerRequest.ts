@@ -6,4 +6,5 @@ export interface CustomerRequest extends CustomerResponse {
   addInvoice?: boolean;
   redirectPath?: string;
   roleId?: string;
+  isUsing2FA?: boolean;
 }

@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import { Formik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Form, Formik } from 'formik';
 import { toast } from 'react-toastify';
-import { Button, Image } from 'react-bootstrap';
+import { Col, Image, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-import { Facebook } from 'react-bootstrap-icons';
 import { signInValidationSchema } from './signInValidationSchema/signInValidationSchema';
 import serviceLogo from '../../../assets/img/serviceLogo.svg';
 import { useCurrentUser } from '../../../contexts/UserContext';
@@ -14,18 +13,19 @@ import SignInForm from './SignInForm/SignInForm';
 import { SignInRequest } from '../../../interfaces/SignIn/SignInRequest';
 import { appendUrlSearchParams } from '../../../utils/appendUrlSearchParams';
 import { getSearchParams } from '../../../utils/getSearchParams';
+import { VerificationCodeValidationSchema } from '../../../validation/validation';
+import TextInput from '../../../components/Inputs/TextInput/TextInput';
 
 const initialValues: SignInRequest = {
   username: '',
   password: ''
 };
 
-const oauth2AuthorizationFacebook = 'http://localhost:8080/oauth2/authorization/google';
-
 const SignIn = () => {
   const { fetchUserData, setIsPending } = useCurrentUser();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [signInRequestCache, setSignInRequestCache] = useState<SignInRequest>();
 
   useEffect(() => {
     const { status } = getSearchParams<{ status: string }>();
@@ -49,7 +49,7 @@ const SignIn = () => {
   }, [t, navigate]);
 
   const handleSignIn = async (values: SignInRequest) => {
-    Axios.defaults.baseURL = 'https://bike-service-be.herokuapp.com';
+    Axios.defaults.baseURL = 'http://localhost:8080';
     const loginParams = appendUrlSearchParams(values);
     try {
       const { headers } = await Axios.post('/login', loginParams);
@@ -63,14 +63,20 @@ const SignIn = () => {
       Axios.defaults.headers['authorization-refresh'] = refreshToken;
       localStorage.setItem('JWT_REFRESH_TOKEN', refreshToken);
 
-      Axios.defaults.baseURL = 'https://bike-service-be.herokuapp.com/api/v1';
+      Axios.defaults.baseURL = 'http://localhost:8080/api/v1';
 
       navigate('/');
 
       await fetchUserData();
-    } catch (e) {
-      Axios.defaults.baseURL = 'https://bike-service-be.herokuapp.com/api/v1';
-      toast.error(t('signIn.wrongEmailOrPassword'));
+    } catch (e: any) {
+      Axios.defaults.baseURL = 'http://localhost:8080/api/v1';
+
+      if (e?.response?.data?.message?.includes('Invalid 2FA code')) {
+        console.log(values);
+        setSignInRequestCache(values);
+      } else {
+        toast.error(t('signIn.wrongEmailOrPassword'));
+      }
     }
   };
 
@@ -84,21 +90,32 @@ const SignIn = () => {
         <div className="form">
           <p className="h1 pb-5">{t('signIn.signIn')}</p>
 
-          <Formik
-            initialValues={initialValues}
-            onSubmit={handleSignIn}
-            validationSchema={signInValidationSchema}>
-            <SignInForm />
-          </Formik>
-
-          <Button className="mt-2" variant="info">
-            <a
-              href={oauth2AuthorizationFacebook}
-              className="text-white text-decoration-none d-flex justify-content-center align-items-center gap-2">
-              {t('signIn.fb')}
-              <Facebook size="1.8rem" />
-            </a>
-          </Button>
+          {!signInRequestCache ? (
+            <Formik
+              initialValues={initialValues}
+              onSubmit={handleSignIn}
+              validationSchema={signInValidationSchema}>
+              <SignInForm />
+            </Formik>
+          ) : (
+            <Formik
+              enableReinitialize
+              initialValues={{ ...signInRequestCache, verificationCode: '' }}
+              onSubmit={handleSignIn}
+              validationSchema={VerificationCodeValidationSchema}>
+              <Form>
+                <Row>
+                  <Col>
+                    <TextInput
+                      name="verificationCode"
+                      label={t('signIn.verificationCode')}
+                      required
+                    />
+                  </Col>
+                </Row>
+              </Form>
+            </Formik>
+          )}
 
           <div className="mt-4">
             {t('register.noAccount')}

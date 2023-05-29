@@ -35,7 +35,7 @@ const UserForm: FC<AddClientFormProps> = ({
 
   return (
     <>
-      <Row as="section">
+      <Row>
         <Col {...formColProps} {...customFormColProps}>
           <TextInput
             name="firstName"
@@ -47,7 +47,7 @@ const UserForm: FC<AddClientFormProps> = ({
         </Col>
       </Row>
 
-      <Row as="section">
+      <Row>
         <Col {...formColProps} {...customFormColProps} className="mt-4">
           <TextInput
             name="lastName"
@@ -67,7 +67,7 @@ const UserForm: FC<AddClientFormProps> = ({
         />
       )}
 
-      <Row as="section">
+      <Row>
         <Col {...formColProps} {...customFormColProps} className="mt-4">
           <PhoneInput
             name="phoneNumber"

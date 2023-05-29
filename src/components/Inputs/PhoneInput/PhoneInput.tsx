@@ -1,9 +1,9 @@
 import React from 'react';
-import { NumericFormat } from 'react-number-format';
 import { Form, InputGroup } from 'react-bootstrap';
 import { ErrorMessage, useField } from 'formik';
 import { TelephonePrefixes } from '../../../consts/telephonePrefixes';
 import InputLabel from '../InputLabel/InputLabel';
+import NumberFormat from 'react-number-format';
 
 interface PhoneInputProps {
   label: string;
@@ -30,10 +30,14 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ label, prefixName, name, requir
                 </option>
               ))}
             </Form.Select>
-            <NumericFormat
-              onValueChange={(values: any) => helpers.setValue(values.value)}
+            <NumberFormat
+              format="### ### ###"
+              mask="_"
+              isInvalid={!!(meta.touched && meta.error)}
+              onValueChange={(values) => helpers.setValue(values.value)}
               {...field}
-              customInput={(props) => <Form.Control {...props} size={undefined} />}
+              onChange={() => undefined}
+              customInput={Form.Control}
             />
             <ErrorMessage name={name}>
               {(err) => <Form.Control.Feedback type="invalid">{err}</Form.Control.Feedback>}
@@ -44,7 +48,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({ label, prefixName, name, requir
         <>
           {label}
           <div className="w-100 p-1" />
-          {prefixField.value} <NumericFormat value={field.value || '-'} displayType="text" />
+          {prefixField.value}{' '}
+          <NumberFormat format="### ### ###" value={field.value || '-'} displayType="text" />
         </>
       )}
     </>
