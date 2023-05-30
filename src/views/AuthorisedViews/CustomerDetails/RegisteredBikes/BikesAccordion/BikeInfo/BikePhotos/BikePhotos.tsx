@@ -2,7 +2,6 @@ import React, { FC, useMemo, useState } from 'react';
 import { PlusLg } from 'react-bootstrap-icons';
 import FsLightbox from 'fslightbox-react';
 import { Image } from 'react-bootstrap';
-import { useFetchData } from '../../../../../../../hooks/useFetchData';
 import { useRegisteredBikes } from '../../../../../../../contexts/RegisteredBikesContext';
 import { BikeListResponse } from '../../../../../../../interfaces/Bike/BikeListResponse';
 

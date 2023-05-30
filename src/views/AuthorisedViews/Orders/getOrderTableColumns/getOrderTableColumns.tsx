@@ -1,11 +1,12 @@
 import { ColumnDescription } from 'react-bootstrap-table-next';
-import { TFunction } from 'react-i18next';
+import { TFunction } from 'i18next';
 import { tableColumnsProps } from '../../../../consts/tableColumnsProps';
-import { dateFormatter } from '../../../../utils/dateFormatter';
 import { Roles } from '../../../../enums/Roles';
-import { serviceHandler } from '../../../../utils/serviceHandler';
-import progressHandler from '../../../../utils/progressHandler';
-import { bikeHandler } from '../../../../utils/bikeHandler';
+import { concatStrings } from '../../../../utils/concatStrings';
+import React from 'react';
+import { getDate } from '../../../../utils/getDate';
+import { serviceTableFormatter } from '../../../../utils/serviceTableFormatter';
+import progressTableFormatter from '../../../../utils/progressTableFormatter';
 
 export const getOrderTableColumns = (
   detailsHandler: (cell: string) => JSX.Element,
@@ -17,20 +18,22 @@ export const getOrderTableColumns = (
       dataField: 'bike.bikeName',
       text: i18n('orders.bikeModel'),
       sort: true,
-      formatter: bikeHandler,
+      formatter: (cell, row) => (
+        <span>{concatStrings([row.bikeName, row.bikeMake, row.bikeModel], ' ')}</span>
+      ),
       style: { maxWidth: 150, ...tableColumnsProps }
     },
     {
       dataField: 'createdOn',
       text: i18n('orders.dateOfEntry'),
       sort: true,
-      formatter: dateFormatter,
+      formatter: getDate,
       style: { maxWidth: 150, ...tableColumnsProps }
     },
     {
       dataField: 'servicesNames',
       text: i18n('orders.typeOfServiceTrans'),
-      formatter: serviceHandler,
+      formatter: serviceTableFormatter,
       style: { maxWidth: 140, overflow: 'hidden', whiteSpace: 'pre-line', textOverflow: 'ellipsis' }
     },
     // {
@@ -45,7 +48,7 @@ export const getOrderTableColumns = (
       dataField: 'orderStatus.orderStatusName',
       text: i18n('orders.progress'),
       sort: true,
-      formatter: progressHandler,
+      formatter: progressTableFormatter,
       style: { maxWidth: 130, ...tableColumnsProps }
     },
     {

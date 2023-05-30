@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
-export const getDate = (ISODate: string, dateFormat = 'DD.MM.YYYY') =>
-  format(new Date(ISODate), dateFormat) || null;
+export const getDate = (ISODate: string, dateFormat = 'dd.MM.yyyy') => format(parseISO(ISODate), 'dd.MM.yyyy');

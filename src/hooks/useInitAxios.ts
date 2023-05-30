@@ -33,8 +33,8 @@ export const useInitAxios = () => {
       if (status === 401) {
         onClearUser();
       } else if (status === 406) {
-        // await setNewAccessToken();
-        // window.location.reload();
+        await setNewAccessToken();
+        window.location.reload();
       } else if ([403, 404].includes(status) && error.response.config.method === 'get') {
         setErrorCode(status);
       }

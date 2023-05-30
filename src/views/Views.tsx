@@ -14,9 +14,9 @@ const Views: FC = () => {
     return <ScreenPending />;
   }
 
-  if (errorCode) {
-    return <ErrorOverlay errorCode={errorCode} />;
-  }
+  // if (errorCode) {
+  //   return <ErrorOverlay errorCode={errorCode} />;
+  // }
 
   if (currentUser) {
     return <AuthorisedViews />;

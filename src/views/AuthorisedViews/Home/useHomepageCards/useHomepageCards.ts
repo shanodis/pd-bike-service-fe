@@ -30,14 +30,20 @@ export const useHomepageCards = (): UseHomepageCards[] => {
   return [
     {
       image: settingsHomeCard,
-      primaryButton: { title: t('homePage.more'), route: `/user/${currentUser?.userId}/settings` },
-      header: t('homePage.settings')
+      primaryButton: {
+        title: t('homePage.more'),
+        route: `/user/${currentUser?.userId}/settings`,
+        visible: true
+      },
+      header: t('homePage.settings'),
+      visible: true
     },
     {
       image: homeScreeBike,
       primaryButton: {
         title: t('homePage.check'),
-        route: `/customers/${currentUser?.userId}/bikes`
+        route: `/customers/${currentUser?.userId}/bikes`,
+        visible: true
       },
       secondaryButton: { title: t('homePage.add'), route: '/orders/new' },
       header: t('homePage.myBikes'),
@@ -45,8 +51,8 @@ export const useHomepageCards = (): UseHomepageCards[] => {
     },
     {
       image: clientsHomeCard,
-      primaryButton: { title: t('homePage.goTo'), route: '/customers' },
-      secondaryButton: { title: t('homePage.add'), route: '/customers/new' },
+      primaryButton: { title: t('homePage.goTo'), route: '/customers', visible: true },
+      secondaryButton: { title: t('homePage.add'), route: '/customers/new', visible: true },
       header: t('homePage.customers'),
       visible: hasRole(Roles.Employee, Roles.Owner)
     },
@@ -54,19 +60,21 @@ export const useHomepageCards = (): UseHomepageCards[] => {
       image: servicesHomeCard,
       primaryButton: {
         title: t(hasRole(Roles.Customer) ? 'homePage.check' : 'homePage.goTo'),
-        route: '/orders'
+        route: '/orders',
+        visible: true
       },
       secondaryButton: {
         title: t('homePage.add'),
         route: '/orders/new',
         visible: hasRole(Roles.Employee, Roles.Owner)
       },
-      header: t('homePage.servicePanel')
+      header: t('homePage.servicePanel'),
+      visible: true
     },
     {
       image: employeesHomeCard,
-      primaryButton: { title: t('homePage.goTo'), route: '/employees' },
-      secondaryButton: { title: t('homePage.add'), route: '/employees/new' },
+      primaryButton: { title: t('homePage.goTo'), route: '/employees', visible: true },
+      secondaryButton: { title: t('homePage.add'), route: '/employees/new', visible: true },
       header: t('homePage.employees'),
       visible: hasRole(Roles.Owner)
     }

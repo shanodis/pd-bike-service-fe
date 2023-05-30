@@ -29,10 +29,9 @@ const EditBike = () => {
   const [showBikeDeleteModal, setShowBikeDeleteModal] = useState(false);
   const history = useHistory();
 
-  const [bikeData, fetchBikeData] = useFetchData<BikeResponse>(
-    `/bikes/${bikeId}`,
+  const [bikeData, fetchBikeData] = useFetchData<BikeResponse>(`/bikes/${bikeId}`, {
     dataMapper: bikeMapper
-  );
+  });
 
   const editBikeBreadcrumbs = [
     { href: '/', name: t('breadcrumbs.dashboard') },
@@ -62,18 +61,14 @@ const EditBike = () => {
       <Container as="main">
         {customerInfo && bikeData ? (
           <>
-            <Row
-              as='header'
-              className='justify-content-between'
-            >
+            <Row as="header" className="justify-content-between">
               <Breadcrumbs items={editBikeBreadcrumbs} />
             </Row>
 
             <Formik<BikeResponse>
               initialValues={bikeData}
               validationSchema={EditBikeValidationSchema}
-              onSubmit={handleSubmit}
-            >
+              onSubmit={handleSubmit}>
               <div className="mt-5">
                 <Form>
                   <Row>
@@ -95,8 +90,7 @@ const EditBike = () => {
                     <Button
                       variant="danger"
                       className="fw-bold"
-                      onClick={() => setShowBikeDeleteModal(true)}
-                    >
+                      onClick={() => setShowBikeDeleteModal(true)}>
                       {t('editBike.delete')}
                     </Button>
 
@@ -104,8 +98,7 @@ const EditBike = () => {
                       <Button
                         variant="secondary-light"
                         className="fw-bold"
-                        onClick={() => history.push(`/customers/${customerId}/bikes`)}
-                      >
+                        onClick={() => history.push(`/customers/${customerId}/bikes`)}>
                         {t('editBike.cancel')}
                       </Button>
 
@@ -122,11 +115,7 @@ const EditBike = () => {
             </Formik>
           </>
         ) : (
-          <Spinner
-            animation='border'
-            variant='primary'
-            className='mt-5'
-          />
+          <Spinner animation="border" variant="primary" className="mt-5" />
         )}
       </Container>
     </BikePhotosProvider>

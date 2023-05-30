@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Route as RouterRoutes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SignIn from './SingIn/SignIn';
 import CompleteRegister from './CompleteRegister/CompleteRegister';
 import Register from './Register/Register';
@@ -7,15 +7,15 @@ import CheckEmail from './CheckEmail/CheckEmail';
 
 const UnauthorisedViews = () => (
   <>
-    <RouterRoutes>
-      <Route path="/register" element={<Register />} />
+    <Switch>
+      <Route path="/register" component={Register} />
 
-      <Route path="/check-email" element={<CheckEmail />} />
+      <Route path="/check-email" component={CheckEmail} />
 
-      <Route path="/set-password" element={<CompleteRegister />} />
+      <Route path="/set-password" component={CompleteRegister} />
 
-      <Route path="/" element={<SignIn />} />
-    </RouterRoutes>
+      <Route path="/" component={SignIn} />
+    </Switch>
   </>
 );
 

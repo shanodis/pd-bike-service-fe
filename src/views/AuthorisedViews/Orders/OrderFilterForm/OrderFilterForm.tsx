@@ -30,11 +30,10 @@ const OrderFilterForm = () => {
 
   const params = useMemo(() => ({ ...getSelectFetchDataParams('orderStatusName') }), []);
 
-  const [orderStatuses] = useFetchData<SelectOptionModel[]>(
-    '/dictionaries/order-statuses',
+  const [orderStatuses] = useFetchData<SelectOptionModel[]>('/dictionaries/order-statuses', {
     dataMapper: orderStatusMapper,
     params
-  );
+  });
 
   const handlePeriodChange = (arg: number) => {
     setFieldValue('orderDateFrom', orderPeriods[arg].startDate);
@@ -44,12 +43,7 @@ const OrderFilterForm = () => {
   return (
     <Form>
       <Row as="section">
-        <Col
-          xs={12}
-          md={6}
-          lg={3}
-          className='mt-5'
-        >
+        <Col xs={12} md={6} lg={3} className="mt-5">
           <TextInput
             name="phrase"
             className="shadow-none"
@@ -60,12 +54,7 @@ const OrderFilterForm = () => {
             placeholder={t('ordersTable.searchPlaceholder')}
           />
         </Col>
-        <Col
-          xs={12}
-          md={3}
-          lg={2}
-          className='mt-4 mt-md-5'
-        >
+        <Col xs={12} md={3} lg={2} className="mt-4 mt-md-5">
           <SelectInput
             valueName="orderStatusId"
             labelName="labelOrderStatus"
@@ -75,12 +64,7 @@ const OrderFilterForm = () => {
             setSubmit
           />
         </Col>
-        <Col
-          xs={12}
-          md={3}
-          lg={2}
-          className='mt-4 mt-md-5'
-        >
+        <Col xs={12} md={3} lg={2} className="mt-4 mt-md-5">
           <SelectInput
             valueName="periods"
             labelName="labelPeriods"
@@ -91,13 +75,7 @@ const OrderFilterForm = () => {
             setSubmit
           />
         </Col>
-        <Col
-          xs={12}
-          md={12}
-          lg={5}
-          xl={5}
-          className='mt-4 mt-md-4 mt-lg-5'
-        >
+        <Col xs={12} md={12} lg={5} xl={5} className="mt-4 mt-md-4 mt-lg-5">
           <OrderCalendar />
         </Col>
         <Col>
@@ -105,8 +83,7 @@ const OrderFilterForm = () => {
             type="submit"
             variant="primary"
             className="bg-primary-lighter border-primary-lighter fw-bold w-auto mt-2"
-            onClick={() => resetForm()}
-          >
+            onClick={() => resetForm()}>
             {t('ordersTable.clearFilters')}
           </Button>
         </Col>

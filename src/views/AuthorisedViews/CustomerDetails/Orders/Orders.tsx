@@ -36,7 +36,7 @@ const Orders = () => {
         <Col className="text-center text-sm-end">
           <Button
             className="mt-5 mb-sm-0 bg-primary-lighter border-primary-lighter"
-            as={Link}
+            as={Link as any}
             to={{
               pathname: '/orders/new',
               search: `?customerId=${customerId}&customerName=${customerData?.lastName} ${customerData?.firstName}&customerPhone=${customerData?.phoneNumber}`

@@ -10,7 +10,6 @@ interface CheckboxProps extends FormCheckProps {
 
 const Checkbox: FC<CheckboxProps> = ({ name, className, type = 'checkbox', ...props }) => {
   const [field, meta] = useField(name);
-  console.log(field);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     field.onChange(e);

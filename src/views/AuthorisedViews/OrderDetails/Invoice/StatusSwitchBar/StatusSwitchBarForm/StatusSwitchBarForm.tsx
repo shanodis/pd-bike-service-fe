@@ -16,11 +16,10 @@ import { OrderStatuses } from '../../../../../../enums/OrderStatuses';
 
 const radioVariants = new Map([
   [i18n.t('orderStatuses.todo'), 'bg-primary-lighter border-primary-lighter'],
-    [i18n.t('orderStatuses.received'), 'bg-info border-info'],
-    [i18n.t('orderStatuses.done'), 'bg-success-lighter border-success-lighter'],
-    [i18n.t('orderStatuses.in-progress'), 'bg-warning border-warning'],
-  ],
-);
+  [i18n.t('orderStatuses.received'), 'bg-info border-info'],
+  [i18n.t('orderStatuses.done'), 'bg-success-lighter border-success-lighter'],
+  [i18n.t('orderStatuses.in-progress'), 'bg-warning border-warning']
+]);
 
 const orderStatusTranslations = [
   { id: OrderStatuses.ToDo, name: i18n.t('orderStatuses.todo') },
@@ -46,11 +45,10 @@ const StatusSwitchBarForm = () => {
 
   const params = useMemo(() => ({ ...getSelectFetchDataParams('orderStatusName') }), []);
 
-  const [orderStatuses] = useFetchData<SelectOptionModel[]>(
-    '/dictionaries/order-statuses',
+  const [orderStatuses] = useFetchData<SelectOptionModel[]>('/dictionaries/order-statuses', {
     dataMapper: orderStatusMapper,
     params
-  );
+  });
 
   const radioStyleChange = (variant: string, radioState: string) =>
     radioState === values.orderStatusId ? `${variant} text-white` : 'bg-white text-dark';
@@ -58,16 +56,8 @@ const StatusSwitchBarForm = () => {
   return (
     <Form className="statuses-spacing">
       <Row className="text-nowrap align-items-baseline">
-        <Col
-          className='mt-2'
-          xs={12}
-          lg={6}
-        >
-          <ToggleButtonGroup
-            name='orderStatusId'
-            type='radio'
-            defaultValue={values.orderStatusId}
-          >
+        <Col className="mt-2" xs={12} lg={6}>
+          <ToggleButtonGroup name="orderStatusId" type="radio" defaultValue={values.orderStatusId}>
             {orderStatuses?.map(({ name, id }) => (
               <RadioButton
                 disabled={hasRole(Roles.Customer)}
@@ -81,31 +71,21 @@ const StatusSwitchBarForm = () => {
                   handleChange(e);
                   setIsReadOnly(e.target.id === 'ReceivedRadio');
                   handleSubmit();
-                }}
-              >
+                }}>
                 {name}
               </RadioButton>
             ))}
           </ToggleButtonGroup>
         </Col>
 
-        <Col
-          className='mt-2'
-          xs={3}
-          lg={3}
-        >
+        <Col className="mt-2" xs={3} lg={3}>
           <InvoiceTotalPrice />
         </Col>
 
-        <Col
-          className='mt-2 text-lg-end'
-          xs={9}
-          lg={3}
-        >
+        <Col className="mt-2 text-lg-end" xs={9} lg={3}>
           <Button
             className="bg-success-lighter border-success-lighter"
-            onClick={() => history.push('/orders')}
-          >
+            onClick={() => history.push('/orders')}>
             {i18n.t('orderStatuses.BackButton')}
           </Button>
         </Col>

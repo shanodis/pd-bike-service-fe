@@ -1,9 +1,9 @@
 import { ColumnDescription, ColumnFormatter } from 'react-bootstrap-table-next';
-import { TFunction } from 'react-i18next';
+import { TFunction } from 'i18next';
 import { tableNumberFormatter } from '../../../../utils/tableNumberFormatter';
 import { tableColumnsProps } from '../../../../consts/tableColumnsProps';
 import { CustomerListResponse } from '../../../../interfaces/Customer/CustomerListResponse';
-import { dateFormatter } from '../../../../utils/dateFormatter';
+import { getDate } from '../../../../utils/getDate';
 
 export function getUsersTableColumns(
   nameFormatter: ReturnType<
@@ -37,14 +37,14 @@ export function getUsersTableColumns(
       dataField: 'createdOn',
       text: i18n('userTable.createdOn'),
       sort: true,
-      formatter: dateFormatter,
+      formatter: getDate,
       searchable: false
     },
     {
       dataField: 'lastServiceOn',
       text: i18n('userTable.lastServiceCreatedOn'),
       sort: true,
-      formatter: dateFormatter,
+      formatter: getDate,
       searchable: false
     },
     {

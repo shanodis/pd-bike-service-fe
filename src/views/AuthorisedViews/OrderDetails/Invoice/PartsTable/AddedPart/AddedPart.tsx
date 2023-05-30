@@ -39,10 +39,10 @@ const AddedPart: React.FC<AddedPartInterface> = ({ part, onDelete }) => {
       });
       fetchData();
       setEdit(false);
-    } catch (error) {
-      const { orderPrice, orderName } = error.response.data.errors;
-      orderPrice && toast.error(error.response.data.errors?.orderPrice[0]);
-      orderName && toast.error(error.response.data.errors?.orderName[0]);
+    } catch (error: any) {
+      const { orderPrice, orderName } = error?.response?.data?.errors || {};
+      orderPrice && toast.error(orderPrice[0]);
+      orderName && toast.error(orderName[0]);
     }
   };
   const handleCancel = () => {
