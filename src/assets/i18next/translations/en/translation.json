@@ -260,7 +260,8 @@
     "fb": "Sign In through Facebook",
     "OAuth2Error": "OAuth2 authentication error",
     "signOut": "See you soon",
-    "verificationCode": "Verification code"
+    "verificationCode": "Verification code",
+    "invalidVerificationCode": "Provided verification code is invalid"
   },
   "breadcrumbs": {
     "dashboard": "Dashboard",

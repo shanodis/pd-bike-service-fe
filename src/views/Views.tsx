@@ -4,7 +4,6 @@ import { useCurrentUser } from '../contexts/UserContext';
 import ScreenPending from '../components/ScreenPending/ScreenPending';
 import UnauthorisedViews from './UnauthorisedViews/UnauthorisedViews';
 import AuthorisedViews from './AuthorisedViews/AuthorisedViews';
-import ErrorOverlay from '../components/ErrorOverlay/ErrorOverlay';
 
 const Views: FC = () => {
   const errorCode = useInitAxios();

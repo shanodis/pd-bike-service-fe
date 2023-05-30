@@ -262,7 +262,8 @@
     "fb": "Zaloguj się przez Facebook",
     "OAuth2Error": "Błąd uwierzytelniania OAuth2",
     "signOut": "Zapraszamy ponownie",
-    "verificationCode": "Kod weryfikacyjny"
+    "verificationCode": "Kod weryfikacyjny",
+    "invalidVerificationCode": "Podany kod weryfikacyjny jest nieprawidłowy"
   },
   "breadcrumbs": {
     "dashboard": "Strona główna",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import { toast } from 'react-toastify';
 import { Col, Image, Row } from 'react-bootstrap';
@@ -12,9 +12,9 @@ import LanguagePicker from '../../../components/LanguagePicker/LanguagePicker';
 import SignInForm from './SignInForm/SignInForm';
 import { SignInRequest } from '../../../interfaces/SignIn/SignInRequest';
 import { appendUrlSearchParams } from '../../../utils/appendUrlSearchParams';
-import { getSearchParams } from '../../../utils/getSearchParams';
 import { VerificationCodeValidationSchema } from '../../../validation/validation';
 import TextInput from '../../../components/Inputs/TextInput/TextInput';
+import SubmitButton from '../../../components/SubmitButton/SubmitButton';
 
 const initialValues: SignInRequest = {
   username: '',
@@ -26,27 +26,6 @@ const SignIn = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const [signInRequestCache, setSignInRequestCache] = useState<SignInRequest>();
-
-  useEffect(() => {
-    const { status } = getSearchParams<{ status: string }>();
-    const statusNumber = Number.parseInt(status, 10);
-
-    if (statusNumber) {
-      return;
-    }
-
-    switch (statusNumber) {
-      case 201:
-        history.push('/check-email');
-        break;
-      case 200:
-        window.location.search = '';
-        break;
-      case 401:
-        toast.error(t('signIn.OAuth2Error'));
-        break;
-    }
-  }, [t, history]);
 
   const handleSignIn = async (values: SignInRequest) => {
     Axios.defaults.baseURL = 'http://localhost:8080';
@@ -60,7 +39,7 @@ const SignIn = () => {
       localStorage.setItem('JWT_USER_TOKEN', accessToken);
 
       const refreshToken = headers['authorization-refresh'];
-      Axios.defaults.headers['authorization-refresh'] = refreshToken;
+      Axios.defaults.headers.common['authorization-refresh'] = refreshToken;
       localStorage.setItem('JWT_REFRESH_TOKEN', refreshToken);
 
       Axios.defaults.baseURL = 'http://localhost:8080/api/v1';
@@ -71,9 +50,10 @@ const SignIn = () => {
     } catch (e: any) {
       Axios.defaults.baseURL = 'http://localhost:8080/api/v1';
 
-      if (e?.response?.data?.message?.includes('Invalid 2FA code')) {
-        console.log(values);
+      if (e?.response?.data?.exception === 'Invalid 2FA code' && !signInRequestCache) {
         setSignInRequestCache(values);
+      } else if (signInRequestCache) {
+        toast.error(t('signIn.invalidVerificationCode'));
       } else {
         toast.error(t('signIn.wrongEmailOrPassword'));
       }
@@ -103,7 +83,7 @@ const SignIn = () => {
               initialValues={{ ...signInRequestCache, verificationCode: '' }}
               onSubmit={handleSignIn}
               validationSchema={VerificationCodeValidationSchema}>
-              <Form>
+              <Form noValidate autoComplete="off">
                 <Row>
                   <Col>
                     <TextInput
@@ -111,6 +91,14 @@ const SignIn = () => {
                       label={t('signIn.verificationCode')}
                       required
                     />
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <SubmitButton variant="primary-lighter" className="mt-5 float-end">
+                      {t('signIn.signIn')}
+                    </SubmitButton>
                   </Col>
                 </Row>
               </Form>

@@ -1,6 +1,6 @@
 import { ToastOptions } from 'react-toastify';
 
-export const toastProps: ToastOptions = {
+export const toastProps: ToastOptions & { limit: number } = {
   position: 'bottom-right',
   autoClose: 5000,
   hideProgressBar: false,
@@ -8,5 +8,6 @@ export const toastProps: ToastOptions = {
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
-  theme: 'colored'
+  theme: 'colored',
+  limit: 1
 };

@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState
 } from 'react';
 import Axios from 'axios';
@@ -21,7 +22,7 @@ interface UserContextInterface {
   currentUser?: CurrentUserResponse;
   isPending: boolean;
   setIsPending: React.Dispatch<React.SetStateAction<boolean>>;
-  fetchUserData: () => Promise<void>;
+  fetchUserData: (updateToken?: boolean) => Promise<void>;
   fetchPicture: () => Promise<void>;
   onLogOut: () => Promise<void>;
   onClearUser: () => void;
@@ -42,25 +43,25 @@ const CurrentUser: FC<PropsInterface> = ({ children }) => {
   const [isPending, setIsPending] = useState(false);
   const { t } = useTranslation();
 
-  const onClearUser = () => setCurrentUser(undefined);
+  const onClearUser = useCallback(() => setCurrentUser(undefined), []);
 
-  const fetchUserData = useCallback(async () => {
+  const fetchUserData = useCallback(async (updateToken = true) => {
     const { accessToken: OAuth2AccessToken, refreshToken: OAuth2RefreshToken } = getSearchParams<{
       accessToken: string;
       refreshToken: string;
     }>();
 
-    if (OAuth2AccessToken && OAuth2RefreshToken) {
+    if (OAuth2AccessToken && OAuth2RefreshToken && updateToken) {
       localStorage.setItem('JWT_USER_TOKEN', OAuth2AccessToken);
       localStorage.setItem('JWT_REFRESH_TOKEN', OAuth2RefreshToken);
       Axios.defaults.headers.common.Authorization = OAuth2AccessToken;
-      Axios.defaults.headers['authorization-refresh'] = OAuth2RefreshToken;
+      Axios.defaults.headers.common['authorization-refresh'] = OAuth2RefreshToken;
     }
 
     setIsPending(true);
 
     const token = localStorage.getItem('JWT_USER_TOKEN');
-    if (!token) {
+    if (!updateToken || !token) {
       setIsPending(false);
       return;
     }
@@ -94,26 +95,29 @@ const CurrentUser: FC<PropsInterface> = ({ children }) => {
     fetchUserData().catch();
   }, [fetchUserData, fetchPicture]);
 
-  const onLogOut = async () => {
+  const onLogOut = useCallback(async () => {
     localStorage.removeItem('JWT_USER_TOKEN');
     localStorage.removeItem('JWT_REFRESH_TOKEN');
     setCurrentUser(undefined);
     delete Axios.defaults.headers.common.Authorization;
-    delete Axios.defaults.headers['authorization-refresh'];
+    delete Axios.defaults.headers.common['authorization-refresh'];
     toast.info(t('signIn.signOut'));
     await fetchUserData();
-  };
+  }, [fetchUserData, t]);
 
-  const contextData = {
-    currentUser,
-    userPhoto,
-    isPending,
-    setIsPending,
-    fetchUserData,
-    fetchPicture,
-    onLogOut,
-    onClearUser
-  };
+  const contextData = useMemo(
+    () => ({
+      currentUser,
+      userPhoto,
+      isPending,
+      setIsPending,
+      fetchUserData,
+      fetchPicture,
+      onLogOut,
+      onClearUser
+    }),
+    [currentUser, fetchPicture, fetchUserData, isPending, onLogOut, userPhoto]
+  );
 
   return <UserContext.Provider value={contextData}>{children}</UserContext.Provider>;
 };
