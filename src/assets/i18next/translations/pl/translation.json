@@ -206,7 +206,7 @@
     "reEnterNewPasswordLabel": "Powtórz nowe hasło",
     "oldPasswordInfo": "Potrzebujemy Twojego starego hasła, aby potwierdzić, że jesteś właścicielem tego konta.",
     "choosePicture": "Wybierz zdjęcie",
-    "fileTypes": "JPG, GIF or PNG. Maksymalny rozmiar 8MB",
+    "fileTypes": "JPG, GIF or PNG. Maksymalny rozmiar 1MB",
     "saveChanges": "Zapisz zmiany",
     "confirmDelete": "Czy jesteś pewnien, że chcesz usunąć to zdjęcie?",
     "confirmDeleteBtn": "Usuń",

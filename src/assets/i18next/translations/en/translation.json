@@ -204,7 +204,7 @@
     "reEnterNewPasswordLabel": "Re-enter New Password",
     "oldPasswordInfo": "We need your old password to confirm you re the owner of this account.",
     "choosePicture": "Choose file",
-    "fileTypes": "JPG, GIF or PNG. Max size of 8MB",
+    "fileTypes": "JPG, GIF or PNG. Max size of 1MB",
     "saveChanges": "Save changes",
     "confirmDelete": "Are you sure you want to delete this photo?",
     "confirmDeleteBtn": "Delete",
